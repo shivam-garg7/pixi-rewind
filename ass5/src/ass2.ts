@@ -30,7 +30,7 @@ export class ass3 extends Application{
     setTimeout(() => {
         
        
-        Gamediv2.appendChild(app3.view)
+        // Gamediv2.appendChild(app3.view)
        
     }, 7000);
 }
