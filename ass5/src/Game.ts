@@ -1,4 +1,4 @@
-import { Application, Sprite,Graphics } from "pixi.js";
+import { Application, Sprite,Graphics,TextStyle,Text } from "pixi.js";
 import { app,Gamediv,app2 } from "./index";
 import { count} from "./index";
 import {Howl, Howler} from 'howler';
@@ -7,6 +7,29 @@ export class game extends Application {
   public sound:Howl
   constructor(opts: any) {
     super(opts)
+    const style = new TextStyle({
+      fontFamily: 'Arial',
+      fontSize: 36,
+      fontStyle: 'italic',
+      fontWeight: 'bold',
+      fill: ['#ffffff', '#00ff99'], // gradient
+      stroke: '#4a1850',
+      strokeThickness: 5,
+      dropShadow: true,
+      dropShadowColor: '#000000',
+      dropShadowBlur: 4,
+      dropShadowAngle: Math.PI / 6,
+      dropShadowDistance: 6,
+      wordWrap: true,
+      wordWrapWidth: 440,
+      lineJoin: 'round',
+  });
+  const richText = new Text('Rich text with a lot of options and across multiple lines', style);
+richText.x = 50;
+richText.y = 220;
+
+this.stage.addChild(richText);
+  
     const {Howl, Howler} = require('howler');
     this.sound = new Howl({
       src: ['./asset/sound.wav']
