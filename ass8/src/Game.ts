@@ -2,10 +2,11 @@ import { Application,BlobResource,Graphics,Sprite } from "pixi.js";
 import { app } from "./index";
 export class game extends Application {
   app1: Application;
+  count:number;
   constructor(opts: any) {
     super(opts)
+    this.count=0;
     const graphics=new Graphics()
-
  graphics.beginFill(0xffffff);
  graphics.drawRect(50, 50, 200, 50);
  graphics.endFill();
@@ -19,8 +20,7 @@ export class game extends Application {
  sprite.buttonMode=true;
  this.stage.addChild(sprite);
 sprite.on("pointerdown",()=>{
-    const graphics1=new Graphics()
-
+    const graphics1=new Graphics();
  graphics1.beginFill(0xff0000);
  graphics1.drawRect(50, 100, 200, 50);
  graphics1.endFill();
@@ -30,6 +30,7 @@ sprite.on("pointerdown",()=>{
  
  graphics1.on("pointerdown",()=>{
   const num=1;
+  this.count=this.count+1;
   this.onclick(num)})
  const graphics2=new Graphics()
 
@@ -41,6 +42,7 @@ sprite.on("pointerdown",()=>{
  graphics2.buttonMode=true;
  graphics2.on("pointerdown",()=>{
   const num=2;
+  this.count=this.count+1;
   this.onclick(num)})
  const graphics3=new Graphics()
 
@@ -52,10 +54,12 @@ sprite.on("pointerdown",()=>{
  graphics3.buttonMode=true;
  graphics3.on("pointerdown",()=>{ 
   const num=3;
+  
   this.onclick(num)})
 })
 
   }
+
   /**
    * onclick
    */
@@ -64,22 +68,25 @@ sprite.on("pointerdown",()=>{
     // this.app1.view.remove()
     // const app1:Application;
     // document.body.appendChild(app.view) 
+    // this.app1 = new game({width:innerWidth,height:innerHeight,backgroundColor:0xff0000});
+    //     document.body.appendChild(this.app1.view);
     switch (num) {
       case 1:
       //  this.app1.view.remove();
-       this.app1 = new game({width:innerWidth,height:innerHeight,backgroundColor:0xff0000});
+
+        this.app1 = new game({width:innerWidth,height:innerHeight,backgroundColor:0xff0000});
         document.body.appendChild(this.app1.view);
         break;
         case 2:
           // this.app1.view.remove();
-
+          // this.app1.stage.destroy()
           this.app1 = new game({width:innerWidth,height:innerHeight,backgroundColor:0x0000ff});
           document.body.appendChild(this.app1.view);
         break;
         case 3:
           // this.app1.view.remove();
-
-          this.app1= new game({width:innerWidth,height:innerHeight,backgroundColor:0x00ff00});
+          // this.app1.stage.destroy()
+                    this.app1= new game({width:innerWidth,height:innerHeight,backgroundColor:0x00ff00});
           document.body.appendChild(this.app1.view);
         break;
     
